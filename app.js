@@ -37,7 +37,7 @@ var wineGlass = new ImageOption('wine-glass', 'img/wine-glass.jpg');
 function randomImages() {
   while (displayImages.length !== 3) {
     var image = imagesArray[Math.floor(Math.random() * imagesArray.length)];
-    if (displayImages.includes(image) === false) {
+    if (displayImages.includes(image) === false && lastShown.includes(image) === false) {
       displayImages.push(image);
     }
   }
