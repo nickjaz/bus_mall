@@ -40,7 +40,6 @@ button {
 
 .display {
   width: 960px;
-  background: #555;
   position: relative;
 }
 
@@ -52,11 +51,12 @@ button {
 }
 
 ul {
+  width: 480px;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 2px;
-  background: #ccc;
-  color: #fff;
+  border: solid 1px #ddd;
+  color: #92CFFF;
   box-shadow: 2px 2px 1px #ddd;
 
 }

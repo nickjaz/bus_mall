@@ -2,6 +2,8 @@
 var imagesArray = [];
 var displayImages = [];
 var lastShown = [];
+var chartLabel = [];
+var chartData = [];
 var counter = 0;
 
 function ImageOption(name, path) {
@@ -77,6 +79,8 @@ function eventHandler() {
     render();
   } else {
     createList();
+    getChartData();
+    buildChart();
   }
 }
 
@@ -89,8 +93,40 @@ function createList() {
     data.push('<li>' + imagesArray[m].name + ' clicked: ' + imagesArray[m].clickCount + ', percentage: ' + Math.floor(imagesArray[m].clickCount/imagesArray[m].displayCount * 100) + '%' + '</li>');
   }
   list.innerHTML = data.join('');
-  console.log(data);
   display.appendChild(list);
+}
+
+function getChartData() {
+  for(var n = 0; n < imagesArray.length; n++) {
+    chartLabel.push(imagesArray[n].name);
+    chartData.push(imagesArray[n].clickCount);
+  }
+}
+
+function buildChart() {
+  var canvas = document.getElementById('chart');
+  var ctx = canvas.getContext('2d');
+
+  var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: chartLabel,
+      datasets: [{
+        label: 'number of clicks',
+        data: chartData,
+        backgroundColor: '#92CFFF',
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
 }
 
 function start() {
