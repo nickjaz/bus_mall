@@ -26,9 +26,19 @@ header img {
   left: 122px;
 }
 
+button {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  background: #92CFFF;
+  box-shadow: 2px 2px 1px #ddd;
+}
+
 .display {
   width: 960px;
-  margin: 0 auto;
   background: #555;
 
 }

@@ -35,44 +35,27 @@ var wineGlass = new ImageOption('wine-glass', 'img/wine-glass.jpg');
 // console.log('in array:', imagesArray);
 
 function randomImages() {
-  for (var i = 0; i < 3; i++) {
-    displayImages.push(imagesArray[Math.floor(Math.random() * imagesArray.length)]);
-  }
-  // while (displayImages[0] === displayImages[1] || displayImages[0] === displayImages[2] || displayImages[1] === displayImages[2]) {
-  //   displayImages.splice(1,2);
-  //   displayImages.push(imagesArray[Math.floor(Math.random() * imagesArray.length)]);
-  // }
-  while (displayImages[0] === displayImages[1] || displayImages[0] === displayImages[2] || displayImages[0] === lastShown[0] || displayImages[0] === lastShown[1] || displayImages[0] === lastShown[2]) {
-    displayImages.splice(0,1, imagesArray[Math.floor(Math.random() * imagesArray.length)]);
-  }
-  while (displayImages[1] === displayImages[0] || displayImages[1] === displayImages[2] || displayImages[1] === lastShown[0] || displayImages[1] === lastShown[1] || displayImages[1] === lastShown[2]) {
-    displayImages.splice(1,1, imagesArray[Math.floor(Math.random() * imagesArray.length)]);
-  }
-  while (displayImages[2] === displayImages[1] || displayImages[2] === displayImages[0] || displayImages[2] === lastShown[0] || displayImages[2] === lastShown[1] || displayImages[2] === lastShown[2]) {
-    displayImages.splice(2,1, imagesArray[Math.floor(Math.random() * imagesArray.length)]);
+  while (displayImages.length !== 3) {
+    var image = imagesArray[Math.floor(Math.random() * imagesArray.length)];
+    if (displayImages.includes(image) === false) {
+      displayImages.push(image);
+    }
   }
 }
-
-randomImages();
-
-// console.log('random images:', displayImages);
 
 function render() {
   for (var j = 0; j < 3; j++){
     var display = document.getElementById('display');
-    var object = displayImages[j];
+    var imageObj = displayImages[j];
     var image = document.createElement('img');
     image.setAttribute('class', 'survey');
-    image.setAttribute('src', object.path);
-    image.setAttribute('id', object.name);
+    image.setAttribute('src', imageObj.path);
+    image.setAttribute('id', imageObj.name);
     display.appendChild(image);
     image.addEventListener('click', eventHandler);
-    object.displayCount++;
-    // console.log(image);
+    imageObj.displayCount++;
   }
 }
-
-render();
 
 function clicker(selected) {
   for (var k = 0; k < imagesArray.length; k++) {
@@ -93,15 +76,33 @@ function eventHandler() {
     randomImages();
     render();
   } else {
-    document.getElementById('display').innerHTML = '';
-    var display = document.getElementById('display');
-    var data = [];
-    var list = document.createElement('ul');
-    for (var m = 0; m < imagesArray.length; m++) {
-      data.push('<li>' + imagesArray[m].name + ' clicked: ' + imagesArray[m].clickCount + ', percentage: ' + Math.floor(imagesArray[m].clickCount/imagesArray[m].displayCount * 100) + '%' + '</li>');
-    }
-    list.innerHTML = data.join('');
-    console.log(data);
-    display.appendChild(list);
+    createList();
   }
 }
+
+function createList() {
+  document.getElementById('display').innerHTML = '';
+  var display = document.getElementById('display');
+  var data = [];
+  var list = document.createElement('ul');
+  for (var m = 0; m < imagesArray.length; m++) {
+    data.push('<li>' + imagesArray[m].name + ' clicked: ' + imagesArray[m].clickCount + ', percentage: ' + Math.floor(imagesArray[m].clickCount/imagesArray[m].displayCount * 100) + '%' + '</li>');
+  }
+  list.innerHTML = data.join('');
+  console.log(data);
+  display.appendChild(list);
+}
+
+function start() {
+  var display = document.getElementById('display');
+  var button = document.createElement('button');
+  button.innerHTML = 'START';
+  button.addEventListener('click', function() {
+    randomImages();
+    render();
+    display.removeChild(button);
+  });
+  display.appendChild(button);
+}
+
+start();
