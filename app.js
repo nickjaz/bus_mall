@@ -68,21 +68,40 @@ function render() {
     display.appendChild(image);
     image.addEventListener('click', eventHandler);
     object.displayCount++;
-    console.log(image);
+    // console.log(image);
   }
 }
 
 render();
 
+function clicker(selected) {
+  for (var k = 0; k < imagesArray.length; k++) {
+    if (imagesArray[k].name === selected) {
+      imagesArray[k].clickCount++;
+    }
+  }
+}
 
 function eventHandler() {
   if (counter < 25) {
-    object.clickCount++;
+    var selected = event.target.id;
+    clicker(selected);
     counter++;
     lastShown = displayImages;
     displayImages = [];
     document.getElementById('display').innerHTML = '';
     randomImages();
     render();
-  } else;
+  } else {
+    document.getElementById('display').innerHTML = '';
+    var display = document.getElementById('display');
+    var data = [];
+    var list = document.createElement('ul');
+    for (var m = 0; m < imagesArray.length; m++) {
+      data.push('<li>' + imagesArray[m].name + ' clicked: ' + imagesArray[m].clickCount + ', percentage: ' + Math.floor(imagesArray[m].clickCount/imagesArray[m].displayCount * 100) + '%' + '</li>');
+    }
+    list.innerHTML = data.join('');
+    console.log(data);
+    display.appendChild(list);
+  }
 }
