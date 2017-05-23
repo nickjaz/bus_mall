@@ -1,0 +1,68 @@
+
+body {
+  width: 960px;
+}
+
+header {
+  height: 50px;
+  margin: 40px auto;
+  position: relative;
+  color: #fff;
+  background: #92CFFF;
+  border-radius: 2px;
+}
+
+h1 {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  font-family:'Asap', sans-serif;
+}
+
+header img {
+  width: 40px;
+  position: absolute;
+  top: 16px;
+  left: 122px;
+}
+
+button {
+  position: absolute;
+  left: 440px;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  background: #92CFFF;
+  box-shadow: 2px 2px 1px #ddd;
+}
+
+.display {
+  width: 960px;
+  background: #555;
+  position: relative;
+}
+
+.survey {
+  width: 290px;
+  padding: 10px;
+  margin-left: 10px;
+  box-shadow: 2px 2px 1px #ddd;
+}
+
+ul {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 2px;
+  background: #ccc;
+  color: #fff;
+  box-shadow: 2px 2px 1px #ddd;
+
+}
+
+li {
+  list-style: none;
+  font-family: 'Roboto Slab', serif;
+
+}
