@@ -12,25 +12,25 @@ function ImageOption(name, path) {
   imagesArray.push(this);
 }
 
-var bag = new ImageOption('bag', 'img/bag.jpg');
-var banana = new ImageOption('banana', 'img/banana.jpg');
-var bathroom = new ImageOption('bathroom', 'img/bathroom.jpg');
-var boots = new ImageOption('boots', 'img/boots.jpg');
-var breakfast = new ImageOption('breakfast', 'img/breakfast.jpg');
-var bubblegum = new ImageOption('bubblegum', 'img/bubblegum.jpg');
-var chair = new ImageOption('chair', 'img/chair.jpg');
-var cthulhu = new ImageOption('cthulhu', 'img/cthulhu.jpg');
-var dogDuck = new ImageOption('dog-duck', 'img/dog-duck.jpg');
-var dragon = new ImageOption('dragon', 'img/dragon.jpg');
-var pen = new ImageOption('pen', 'img/pen.jpg');
-var petSweep = new ImageOption('pet-sweep', 'img/pet-sweep.jpg');
-var shark = new ImageOption('shark', 'img/shark.jpg');
-var sweep = new ImageOption('sweep', 'img/sweep.png');
-var tauntaun = new ImageOption('tauntaun', 'img/tauntaun.jpg');
-var unicorn = new ImageOption('unicorn', 'img/unicorn.jpg');
-var usb = new ImageOption('usb', 'img/usb.gif');
-var waterCan = new ImageOption('water-can', 'img/water-can.jpg');
-var wineGlass = new ImageOption('wine-glass', 'img/wine-glass.jpg');
+new ImageOption('bag', 'img/bag.jpg');
+new ImageOption('banana', 'img/banana.jpg');
+new ImageOption('bathroom', 'img/bathroom.jpg');
+new ImageOption('boots', 'img/boots.jpg');
+new ImageOption('breakfast', 'img/breakfast.jpg');
+new ImageOption('bubblegum', 'img/bubblegum.jpg');
+new ImageOption('chair', 'img/chair.jpg');
+new ImageOption('cthulhu', 'img/cthulhu.jpg');
+new ImageOption('dog-duck', 'img/dog-duck.jpg');
+new ImageOption('dragon', 'img/dragon.jpg');
+new ImageOption('pen', 'img/pen.jpg');
+new ImageOption('pet-sweep', 'img/pet-sweep.jpg');
+new ImageOption('shark', 'img/shark.jpg');
+new ImageOption('sweep', 'img/sweep.png');
+new ImageOption('tauntaun', 'img/tauntaun.jpg');
+new ImageOption('unicorn', 'img/unicorn.jpg');
+new ImageOption('usb', 'img/usb.gif');
+new ImageOption('water-can', 'img/water-can.jpg');
+new ImageOption('wine-glass', 'img/wine-glass.jpg');
 
 // console.log('in array:', imagesArray);
 
