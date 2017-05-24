@@ -3,8 +3,15 @@ var imagesArray = [];
 var displayImages = [];
 var lastShown = [];
 var chartLabel = [];
-var chartData = [];
+var chartClickData = [];
+var chartDisplayData = [];
 var counter = 0;
+
+if (localStorage.chartClickData && localStorage.chartDisplayData) {
+  chartClickData = localStorage.chartClickData.split(',');
+  chartDisplayData = localStorage.chartDisplayData.split(',');
+  counter = 24;
+}
 
 function ImageOption(name, path) {
   this.name = name;
@@ -78,9 +85,10 @@ function eventHandler() {
     randomImages();
     render();
   } else {
-    createList();
     getChartData();
+    createList();
     buildChart();
+    save();
   }
 }
 
@@ -90,7 +98,7 @@ function createList() {
   var data = [];
   var list = document.createElement('ul');
   for (var m = 0; m < imagesArray.length; m++) {
-    data.push('<li>' + imagesArray[m].name + ' clicked: ' + imagesArray[m].clickCount + '/' + + imagesArray[m].displayCount + ', percentage: ' + Math.floor(imagesArray[m].clickCount/imagesArray[m].displayCount * 100) + '%' + '</li>');
+    data.push('<li>' + chartLabel[m]+ ' clicked: ' + chartClickData[m] + '/' + + chartDisplayData[m] + ', percentage: ' + Math.floor(chartClickData[m]/chartDisplayData[m] * 100) + '%' + '</li>');
   }
   list.innerHTML = data.join('');
   display.appendChild(list);
@@ -99,7 +107,8 @@ function createList() {
 function getChartData() {
   for(var n = 0; n < imagesArray.length; n++) {
     chartLabel.push(imagesArray[n].name);
-    chartData.push(imagesArray[n].clickCount);
+    chartClickData.push(imagesArray[n].clickCount);
+    chartDisplayData.push(imagesArray[n].displayCount);
   }
 }
 
@@ -113,7 +122,7 @@ function buildChart() {
       labels: chartLabel,
       datasets: [{
         label: 'number of clicks',
-        data: chartData,
+        data: chartClickData,
         backgroundColor: '#92CFFF',
       }]
     },
@@ -129,6 +138,24 @@ function buildChart() {
   });
 }
 
+function save() {
+  localStorage.chartClickData = chartClickData;
+  localStorage.chartDisplayData = chartDisplayData;
+}
+
+function load() {
+  if (counter >= 24) {
+    for(var p = 0; p < imagesArray.length; p++) {
+      chartLabel.push(imagesArray[p].name);
+    }
+    createList();
+    buildChart();
+    var display = document.getElementById('display');
+    var button = document.createElement('button');
+    display.removeChild(button);
+  }
+}
+
 function start() {
   var display = document.getElementById('display');
   var button = document.createElement('button');
@@ -141,4 +168,5 @@ function start() {
   display.appendChild(button);
 }
 
+load();
 start();
