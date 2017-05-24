@@ -90,7 +90,7 @@ function createList() {
   var data = [];
   var list = document.createElement('ul');
   for (var m = 0; m < imagesArray.length; m++) {
-    data.push('<li>' + imagesArray[m].name + ' clicked: ' + imagesArray[m].clickCount + ', percentage: ' + Math.floor(imagesArray[m].clickCount/imagesArray[m].displayCount * 100) + '%' + '</li>');
+    data.push('<li>' + imagesArray[m].name + ' clicked: ' + imagesArray[m].clickCount + '/' + + imagesArray[m].displayCount + ', percentage: ' + Math.floor(imagesArray[m].clickCount/imagesArray[m].displayCount * 100) + '%' + '</li>');
   }
   list.innerHTML = data.join('');
   display.appendChild(list);
